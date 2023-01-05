@@ -12,8 +12,9 @@ public class Lab11avst
     {
         // This main method needs additions for the 100 point version.
         Scanner input = new Scanner(System.in);
-        final int MAX = 100;
-        boolean primes[];
+        System.out.print("Enter the primes upperbound  ===>  ");
+        final int MAX = input.nextInt();
+        boolean primes[] = new boolean[MAX];
         primes = new boolean[MAX];
         computePrimes(primes);
         displayPrimes(primes);
@@ -23,27 +24,19 @@ public class Lab11avst
     {
         System.out.println("\nCOMPUTING PRIME NUMBERS");
 
-        for(int k = 2; k < primes.length; k++) {
-            primes [k] = true;
+        for(int k = 2; k < primes.length; k++)
+            primes[k] = true;
+
+
+
+        for(int index = 2; index < primes.length; index++) {
+                for (int k = index * 2; k < primes.length; k += index) {
+                    primes[k] = false;
+
+                }
+
+
         }
-
-       for(int x = 4; x < primes.length; x+=2){
-           primes[x] = false;
-       }
-
-       for(int y = 6; y < primes.length; y+=3){
-           primes[y] = false;
-       }
-
-       for(int g = 10; g < primes.length; g+=5){
-           primes[g] = false;
-       }
-
-       for(int p = 14; p < primes.length; p+=7){
-
-       }
-
-
           }
 
 
@@ -54,7 +47,6 @@ public class Lab11avst
     {
         System.out.println("\n\nPRIMES BETWEEN 1 AND "+ primes.length);
         System.out.println();
-
         for(int k = 2; k < primes.length; k++) {
             if(primes[k] == true){
                 System.out.print(k + " ");
